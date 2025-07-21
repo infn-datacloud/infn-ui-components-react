@@ -2,7 +2,12 @@
 //
 // SPDX-License-Identifier: EUPL-1.2
 
-import { arrayRange } from "@/utils/numbers";
+function arrayRange(start: number, stop: number, step: number = 1) {
+  return Array.from(
+    { length: (stop - start) / step + 1 },
+    (_, index) => start + index * step
+  );
+}
 
 function PreviousPage(props: Readonly<{ page: number }>) {
   const { page } = props;
@@ -62,11 +67,13 @@ export function Stepper(props: Readonly<StepperProps>) {
   const nextPages = arrayRange(currentPage + 1, lastPage);
 
   function PreviousPages() {
-    return previousPages.map(i => <PreviousPage key={`step-${i}`} page={i} />);
+    return previousPages.map((i) => (
+      <PreviousPage key={`step-${i}`} page={i} />
+    ));
   }
 
   function NextPages() {
-    return nextPages.map(i => (
+    return nextPages.map((i) => (
       <NextPage key={`step-${i}`} page={i} totalPages={totalPages} />
     ));
   }
