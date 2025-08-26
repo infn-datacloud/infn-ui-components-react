@@ -6,6 +6,7 @@ import NextLink from "next/link";
 
 type LinkProps = {
   href: string;
+  target?: "_blank";
   children: React.ReactNode;
 };
 
@@ -14,6 +15,7 @@ export default function Link(props: Readonly<LinkProps>) {
   return (
     <NextLink
       href={href}
+      target={props.target}
       className="font-medium text-primary-600 underline dark:text-primary-400"
     >
       {children}

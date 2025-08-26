@@ -6,13 +6,13 @@ import { UserCircleIcon } from "@heroicons/react/24/solid";
 import { createHash } from "node:crypto";
 
 type GravatarProps = {
-  email: string | undefined | null;
+  email?: string | undefined | null;
 };
 function FallbackImage() {
   return <UserCircleIcon className="size-12" />;
 }
 
-export async function Gravatar(props: Readonly<GravatarProps>) {
+export function Gravatar(props: Readonly<GravatarProps>) {
   const { email } = props;
   if (!email) {
     return <FallbackImage />;

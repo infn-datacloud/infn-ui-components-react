@@ -1,3 +1,3 @@
 export { Drawer, toggleDrawer } from "./drawer";
-export { Link } from "./link";
+export { Link as DrawerLink } from './link';
 export { ToggleDrawerButton } from "./toggle-drawer-button";

@@ -36,7 +36,7 @@ export default function MyToaster(
   return <Toaster position="top-right" />;
 }
 
-let Icon = (props: Readonly<{ type: NotificationType }>) => {
+const Icon = (props: Readonly<{ type: NotificationType }>) => {
   const { type } = props;
   switch (type) {
     case "info":
