@@ -18,7 +18,7 @@ export  function Combobox<T>(props: Readonly<ComboboxProps<T>>) {
   const { onSelect: onSelected, onQueryChange, children } = props;
   return (
     <HeadlessCombobox onChange={onSelected}>
-      <div className="relative z-50">
+      <div className="relative">
         <ComboboxInput onChange={event => onQueryChange(event.target.value)} />
         <ComboboxOptions>{children}</ComboboxOptions>
       </div>

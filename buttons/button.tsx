@@ -8,6 +8,15 @@ export default function Button(props: React.ComponentProps<typeof HeadButton>) {
 	const { className, ...otherProps } = props;
 
 	return (
-		<HeadButton {...otherProps} className={`cursor-pointer ${className ?? ''}`} />
+		<HeadButton
+			{...otherProps}
+			className={`cursor-pointer rounded-4xl
+ px-5
+ ${className ?? ''}`}
+		/>
 	);
 }
+
+
+//  border-radius: 2rem;
+// 	padding: 0.3em 1em;
