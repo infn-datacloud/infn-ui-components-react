@@ -16,23 +16,21 @@ export default function Navbar(props: Readonly<NavProps>) {
 
 	return (
 		<div className='w-full h-16 bg-infn'>
-			<Link href='/'>
-				<span className='h-full flex items-center'>
-					{logo && (
-						<Image
-							src={logo}
-							alt='Logo'
-							width={100}
-							height={60}
-							className='inline-block ml-4 mr-2'
-						/>
-					)}
-					{name && (
-						<span className='text-white text-xl font-semibold'>
-							{name}
-						</span>
-					)}
-				</span>
+			<Link href='/' className='w-fit h-full flex items-center'>
+				{logo && (
+					<Image
+						src={logo}
+						alt='Logo'
+						width={100}
+						height={60}
+						className='inline-block ml-4 mr-2'
+					/>
+				)}
+				{name && (
+					<span className='text-white text-xl font-semibold'>
+						{name}
+					</span>
+				)}
 			</Link>
 
 			{children}
