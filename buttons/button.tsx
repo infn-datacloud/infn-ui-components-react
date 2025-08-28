@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2025 Istituto Nazionale di Fisica Nucleare
 //
 // SPDX-License-Identifier: EUPL-1.2
- 
+
 import { Button as HeadButton } from '@headlessui/react';
 
 export default function Button(props: React.ComponentProps<typeof HeadButton>) {
@@ -10,13 +10,7 @@ export default function Button(props: React.ComponentProps<typeof HeadButton>) {
 	return (
 		<HeadButton
 			{...otherProps}
-			className={`cursor-pointer rounded-4xl
- px-5
- ${className ?? ''}`}
+			className={`flex items-center justify-center ${className ?? ''}`}
 		/>
 	);
 }
-
-
-//  border-radius: 2rem;
-// 	padding: 0.3em 1em;
