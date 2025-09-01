@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: EUPL-1.2
 
-import { UserIcon } from '@heroicons/react/24/solid';
+import { UserIcon, InboxIcon } from '@heroicons/react/24/solid';
 import Status from '@/components/status';
 import Link from 'next/link';
 
@@ -29,22 +29,29 @@ export default function List(props: Readonly<ListProps>) {
 		>
 			<h3 className='w-full md:w-1/2 truncate font-black'>{item.name}</h3>
 			{item.user_name && (
-				<p
-					className='w-full md:w-1/4 truncate flex items-center opacity-50 font-bold text-sm'
-				>
+				<p className='w-full md:w-1/4 truncate flex items-center opacity-50 font-bold text-sm'>
 					<UserIcon className='size-4' />
 					&nbsp;{item.user_name}
 				</p>
 			)}
-				<p className='w-full md:w-1/4 mt-6 md:mt-0 flex justify-end'>
-					<Status status={item.status} />
-				</p>
+			<p className='w-full md:w-1/4 mt-6 md:mt-0 flex justify-end'>
+				<Status status={item.status} />
+			</p>
 		</Link>
 	));
 
-	return (
-		<>
-			<div className=''>{listItems}</div>
-		</>
-	);
+	if (!items || items.length === 0) {
+		return (
+			<div className='flex flex-col items-center pt-24 opacity-80'>
+				<InboxIcon className='size-24 opacity-50'/>
+				<h2 className='text-center py-4'>No items found</h2>
+				<p className='w-2/3 text-center'>
+					Nothing to display at the moment. As soon as items are
+					added, they will be listed here for you to view and manage.
+				</p>
+			</div>
+		);
+	}
+
+	return <>{listItems}</>;
 }
