@@ -79,7 +79,7 @@ export function Stepper(props: Readonly<StepperProps>) {
   }
 
   return (
-    <div className="flex flex-col font-bold">
+    <div className="flex flex-col font-bold w-min">
       <PreviousPages />
       <CurrentPage page={currentPage} totalPages={totalPages} />
       <NextPages />

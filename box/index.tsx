@@ -21,13 +21,13 @@ export default function Box(props: Readonly<BoxProps>) {
 
 	if (!type || type === 'blank') {
 		return (
-			<div className='w-full bg-white p-8 shadow-[-3px_3px_8px_rgba(0,0,0,0.1)] rounded-3xl mt-6'>
+			<div className='w-full box'>
 				{children}
 			</div>
 		);
 	} else if (type === 'small') {
 		return (
-			<div className='w-full bg-white p-8 shadow-[-3px_3px_8px_rgba(0,0,0,0.1)] rounded-3xl mt-6'>
+			<div className='w-full box'>
 				<div className='flex flex-col items-center justify-center md:items-start lg:items-center lg:flex-row lg:justify-between'>
 					<div className='flex flex-col items-center text-center w-full lg:w-6/10 md:text-left md:items-start md:flex-row'>
 						{icon ? (

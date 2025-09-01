@@ -19,13 +19,13 @@ export default function Header(props: Readonly<HeaderProps>) {
 				<Image
 					src={logo}
 					alt='Logo'
-					width={200}
-					height={100}
-					className='mb-4'
+					width={300}
+					height={150}
+					className='m-8'
 				/>
 			)}
-			{title && <span className='text-3xl font-bold mb-2'>{title}</span>}
-			{subtitle && <span className='w-2/3'>{subtitle}</span>}
+			{title && <h1 className='font-bold mb-2'>{title}</h1>}
+			{subtitle && <p className='w-2/3'>{subtitle}</p>}
 		</div>
 	);
 }
