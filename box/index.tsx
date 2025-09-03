@@ -47,7 +47,7 @@ export default function Box(props: Readonly<BoxProps>) {
 						</div>
 					</div>
 					<Link href={btnHref || ''} className='w-full lg:w-auto'>
-						<Button className='btn btn-secondary btn-bold w-full mt-6 lg:w-auto lg:mt-0'>
+						<Button className='btn btn-primary btn-bold w-full mt-6 lg:w-auto lg:mt-0 clickable'>
 							{btnText || ''}{' '}
 							<ArrowRightIcon className='w-5 h-5' />
 						</Button>
