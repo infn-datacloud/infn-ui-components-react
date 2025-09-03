@@ -124,7 +124,7 @@ export function InputList(props: Readonly<InputListProps>) {
 					type={type}
 					required={isRequired}
 				/>
-				<Input hidden value={items} type={type} name={name} />
+				<Input hidden readOnly value={items.join(',')} type={type} name={name} />
 				<Button
 					className='btn-secondary items-center'
 					type='button'
