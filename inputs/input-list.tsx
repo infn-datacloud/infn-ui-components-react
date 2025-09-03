@@ -99,7 +99,7 @@ export function InputList(props: Readonly<InputListProps>) {
 				<XMarkIcon />
 			</button>
 			<input
-				className='w-full bg-transparent iam-input border-0 hover:not-focus:bg-infn/3'
+				className='w-full bg-transparent iam-input border-0 hover:not-focus:bg-infn/3 px-3'
 				defaultValue={item}
 				contentEditable={false}
 				onBlur={(e) => checkValidity(e.target.value, index)}
