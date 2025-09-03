@@ -45,6 +45,7 @@ export function InputList(props: Readonly<InputListProps>) {
 			setErrorMessage(error);
 			return;
 		}
+
 		if (!items.find((i) => i === value)) {
 			const newItems = [...items, value];
 			onChange?.(newItems);
@@ -55,6 +56,7 @@ export function InputList(props: Readonly<InputListProps>) {
 			}
 		} else {
 			console.warn('item already present');
+			setErrorMessage(`Item "${item}" is already present.`);
 		}
 	};
 	const removeItem = (index: number) => {
@@ -66,6 +68,26 @@ export function InputList(props: Readonly<InputListProps>) {
 			setIsRequired(true);
 		}
 	};
+
+	const checkValidity = (item: string, index: number) => {
+		if (items.filter(item => item === item).length > 1) {
+			// if the item is already present, remove it
+			removeItem(index);
+			if (inputRef.current) {
+				inputRef.current.value = item;
+				setValue(item);
+			}
+			setErrorMessage(`Item "${item}" is already present.`);
+			return;
+		}
+
+		if (item.length === 0) {
+			// if the item is empty, remove it
+			removeItem(index);
+			setErrorMessage(`Can't insert empty values.`);
+			return;
+		}
+	}
 
 	const listItems = items.map((item, index) => (
 		<li key={item} className='mt-1 flex flex-row items-center'>
@@ -80,6 +102,7 @@ export function InputList(props: Readonly<InputListProps>) {
 				className='w-full bg-transparent iam-input border-0 hover:not-focus:bg-infn/3'
 				defaultValue={item}
 				contentEditable={false}
+				onBlur={(e) => checkValidity(e.target.value, index)}
 			/>
 		</li>
 	));
