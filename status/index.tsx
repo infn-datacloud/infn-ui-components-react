@@ -19,6 +19,7 @@ import {
 	NoSymbolIcon,
 	XCircleIcon,
 } from '@heroicons/react/24/solid';
+import { JSX } from 'react';
 
 interface StatusConfig {
     name: string;

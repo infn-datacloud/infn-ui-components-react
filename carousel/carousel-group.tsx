@@ -4,8 +4,8 @@
 
 import { TabGroup, TabGroupProps } from "@headlessui/react";
 
-interface CarouselGroupProps extends TabGroupProps {}
+// interface CarouselGroupProps extends TabGroupProps {}
 
-export default function CarouselGroup(props: Readonly<CarouselGroupProps>) {
+export default function CarouselGroup(props: Readonly<TabGroupProps>) {
   return <TabGroup {...props} />;
 }
