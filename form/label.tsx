@@ -7,12 +7,12 @@ import {
   LabelProps as HeadlessLabelProps,
 } from "@headlessui/react";
 
-interface LabelProps extends HeadlessLabelProps {}
+type LabelProps = HeadlessLabelProps
 
 export function Label(props: Readonly<LabelProps>) {
   return (
     <HeadlessLabel
-      className="data-[required]:after:text-danger text-light dark:text-secondary py-1 text-sm data-[required]:after:content-['*']"
+      className="data-[required]:after:text-danger dark:text-secondary py-1 uppercase text-infn font-bold text-sm data-[required]:after:content-['*']"
       {...props}
     />
   );
