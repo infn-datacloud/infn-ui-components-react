@@ -12,7 +12,6 @@ import {
   DialogTitle,
   Transition,
 } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
 
 export interface ModalProps {
   title?: ReactNode;
@@ -45,9 +44,9 @@ export function Modal(props: Readonly<ModalProps>) {
 						>
 							<DialogTitle
 								as='div'
-								className='text-infn flex text-lg font-black uppercase mb-8'
+								className='text-infn flex text-2xl font-black uppercase mb-4'
 							>
-								<h2>{title}</h2>
+								{title}
 								{/* <button
 									title='Close'
 									className='mr-0 ml-auto'

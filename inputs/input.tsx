@@ -6,29 +6,29 @@ import {
 	Input as HeadlessInput,
 	type InputProps as HeadlessInputProps,
 } from '@headlessui/react';
-import {Label} from '@/components/form';
+import { Label } from '@/components/form';
 
 export interface InputProps extends HeadlessInputProps {
 	'data-testid'?: string;
-  label?: string;
-  required?: boolean;
+	label?: string;
+	required?: boolean;
 }
 
 export function Input(props: Readonly<InputProps>) {
-	const {label, required} = props;
-  
-  return (
+	const { label, required } = props;
+
+	return (
 		<>
-      {
-        label && (
-          <Label data-required={required ? 'true' : undefined}>{label}</Label>
-        )
-      }
+			{label && (
+				<Label data-required={required ? 'true' : undefined}>
+					{label}
+				</Label>
+			)}
 			<HeadlessInput
 				className='iam-input'
 				{...props}
 				required={required ? true : false}
 			/>
 		</>
-  );
+	);
 }

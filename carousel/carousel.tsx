@@ -8,12 +8,13 @@ type CarouselProps = {
   selectedIndex?: number;
   onChange?: (index: number) => void;
   children?: React.ReactNode;
+  className?: string;
 };
 
 export default function Carousel(props: Readonly<CarouselProps>) {
-  const { selectedIndex, onChange, children } = props;
+  const { selectedIndex, onChange, children, className } = props;
   return (
-    <CarouselGroup selectedIndex={selectedIndex} onChange={onChange}>
+    <CarouselGroup selectedIndex={selectedIndex} onChange={onChange} className={className}>
       {children}
     </CarouselGroup>
   );

@@ -9,19 +9,68 @@ import Link from 'next/link';
 type BoxProps = {
 	title?: string;
 	subtitle?: string;
+	header?: string;
 	btnText?: string;
 	btnHref?: string;
+	onclick?: () => void;
 	icon?: React.ReactNode;
 	type?: 'small' | 'blank';
 	children?: React.ReactNode;
 };
 
 export default function Box(props: Readonly<BoxProps>) {
-	const { title, subtitle, btnText, btnHref, icon, type, children } = props;
+	const {
+		title,
+		subtitle,
+		header,
+		btnText,
+		btnHref,
+		onclick,
+		icon,
+		type,
+		children,
+	} = props;
 
 	if (!type || type === 'blank') {
 		return (
 			<div className='w-full box'>
+				<div className='flex flex-row justify-between items-center'>
+					<div className='flex flex-col w-8/10 lg:w-7/10'>
+						{header ? (
+							<span className='text-sm uppercase font-bold text-infn/50 lg:w-full'>
+								{header}
+							</span>
+						) : (
+							''
+						)}
+						{title ? (
+							<span className='text-xl font-bold lg:w-full'>
+								{title}
+							</span>
+						) : (
+							''
+						)}
+						{subtitle ? (
+							<span className='text-sm md:truncate lg:w-full'>
+								{subtitle || ''}
+							</span>
+						) : (
+							''
+						)}
+					</div>
+					{btnText ? (
+						<div>
+							<Button
+								className='btn btn-secondary lg:w-auto lg:mt-0'
+								onClick={onclick}
+							>
+								{btnText || ''}
+							</Button>
+						</div>
+					) : (
+						''
+					)}
+				</div>
 				{children}
 			</div>
 		);
