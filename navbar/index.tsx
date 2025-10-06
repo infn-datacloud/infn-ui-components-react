@@ -15,8 +15,8 @@ export default function Navbar(props: Readonly<NavProps>) {
 	const { logo, name, children } = props;
 
 	return (
-		<div className='w-full h-16 bg-infn'>
-			<Link href='/' className='w-fit h-full flex items-center'>
+		<div className='w-full h-16 bg-infn flex items-center justify-between'>
+			<Link href='/' className='w-auto h-full flex items-center'>
 				{logo && (
 					<Image
 						src={logo}
