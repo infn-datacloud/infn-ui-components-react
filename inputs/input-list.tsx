@@ -9,7 +9,6 @@ import { PlusIcon, XMarkIcon } from '@heroicons/react/16/solid';
 import { Input } from '@/components/inputs';
 import { Button } from '@/components/buttons';
 import { Label } from '@/components/form';
-import { ToasterPortal } from '../toaster';
 
 interface InputListProps {
 	id?: string;
@@ -69,25 +68,40 @@ export function InputList(props: Readonly<InputListProps>) {
 		}
 	};
 
-	const checkValidity = (item: string, index: number) => {
-		if (items.filter(item => item === item).length > 1) {
-			// if the item is already present, remove it
-			removeItem(index);
-			if (inputRef.current) {
-				inputRef.current.value = item;
-				setValue(item);
-			}
-			setErrorMessage(`Item "${item}" is already present.`);
-			return;
-		}
+	const checkValidity = (newItem: string, index: number) => {
+		const trimmedItem = newItem.trim();
 
-		if (item.length === 0) {
-			// if the item is empty, remove it
+		// Check for empty values
+		if (trimmedItem.length === 0) {
 			removeItem(index);
 			setErrorMessage(`Can't insert empty values.`);
 			return;
 		}
-	}
+
+		// Check for duplicates (excluding the current index)
+		const isDuplicate = items.some(
+			(existing, i) => existing === trimmedItem && i !== index
+		);
+		if (isDuplicate) {
+			removeItem(index);
+			if (inputRef.current) {
+				inputRef.current.value = trimmedItem;
+				setValue(trimmedItem);
+			}
+			setErrorMessage(`Item "${trimmedItem}" is already present.`);
+			return;
+		}
+
+		// Update the item if it changed
+		if (items[index] !== trimmedItem) {
+			const updated = [...items];
+			updated[index] = trimmedItem;
+			setItems(updated);
+		}
+
+		// Clear any previous error message
+		setErrorMessage('');
+	};
 
 	const listItems = items.map((item, index) => (
 		<li key={item} className='mt-1 flex flex-row items-center'>
@@ -144,7 +158,13 @@ export function InputList(props: Readonly<InputListProps>) {
 					type={type}
 					required={isRequired}
 				/>
-				<Input hidden readOnly value={items.join(',')} type={type} name={name} />
+				<Input
+					hidden
+					readOnly
+					value={JSON.stringify(items)}
+					type={type}
+					name={name}
+				/>
 				<Button
 					className='btn-secondary items-center'
 					type='button'

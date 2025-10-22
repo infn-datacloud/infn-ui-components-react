@@ -29,59 +29,59 @@ interface StatusConfig {
 
 export const statusMap: Record<string, StatusConfig> = {
 	0: {
-        name: 'draft',
+		name: 'draft',
 		color: '#90A4AE', // Blue Grey 300 – initial, still incomplete
 		icon: <PencilIcon className='size-4' />,
 	},
 	1: {
-        name: 'ready',
+		name: 'ready',
 		color: '#64B5F6', // Blue 300 – ready, positive but waiting
 		icon: <CheckCircleIcon className='size-4' />,
 	},
 	2: {
-        name: 'submitted',
+		name: 'submitted',
 		color: '#1976D2', // Blue 700 – submitted, formal and reliable
 		icon: <PaperAirplaneIcon className='size-4' />,
 	},
 	3: {
-        name: 'evaluation',
+		name: 'evaluation',
 		color: '#FBC02D', // Yellow 700 – under evaluation, attention needed
 		icon: <ClockIcon className='size-4' />,
 	},
 	4: {
-        name: 'pre-production',
+		name: 'pre-production',
 		color: '#FFA726', // Orange 400 – pre-production, data collection phase
 		icon: <BeakerIcon className='size-4' />,
 	},
 	5: {
-        name: 'active',
+		name: 'active',
 		color: '#43A047', // Green 600 – active, working, healthy
 		icon: <PlayIcon className='size-4' />,
 	},
 	6: {
-        name: 're-evaluation',
-		color: '#FDD835', // Yellow 600 – re-evaluation, verification in progress
-		icon: <ArrowPathIcon className='size-4' />,
+		name: 'deprecated',
+		color: '#8D6E63', // Brown 400 – deprecated, obsolete but still recoverable
+		icon: <NoSymbolIcon className='size-4' />,
 	},
 	7: {
-        name: 'maintenance',
-		color: '#FB8C00', // Orange 600 – maintenance, work in progress
-		icon: <WrenchIcon className='size-4' />,
+		name: 'removed',
+		color: '#424242', // Grey 800 – removed, no longer usable
+		icon: <XCircleIcon className='size-4' />,
 	},
 	8: {
-        name: 'degraded',
+		name: 'degraded',
 		color: '#E53935', // Red 600 – degraded or offline, critical state
 		icon: <ExclamationTriangleIcon className='size-4' />,
 	},
 	9: {
-        name: 'deprecated',
-		color: '#8D6E63', // Brown 400 – deprecated, obsolete but still recoverable
-		icon: <NoSymbolIcon className='size-4' />,
+		name: 'maintenance',
+		color: '#FB8C00', // Orange 600 – maintenance, work in progress
+		icon: <WrenchIcon className='size-4' />,
 	},
 	10: {
-        name: 'removed',
-		color: '#424242', // Grey 800 – removed, no longer usable
-		icon: <XCircleIcon className='size-4' />,
+		name: 're-evaluation',
+		color: '#FDD835', // Yellow 600 – re-evaluation, verification in progress
+		icon: <ArrowPathIcon className='size-4' />,
 	},
 };
   
