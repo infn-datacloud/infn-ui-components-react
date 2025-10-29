@@ -18,14 +18,14 @@ export { ListboxOption as SelectOption };
 export type SelectOption = {
 	id: string;
 	name: string;
-};
+} | string;
 
 type SelectProps = {
 	name: string;
 	label?: string;
 	children: React.ReactNode;
 	onChange?: (value: { id: string; name: string }) => void;
-	defaultValue?: { id: string; name: string };
+	defaultValue?: { id: string; name: string } | string;
 	disabled?: boolean;
 };
 
@@ -58,7 +58,11 @@ export function Select(props: Readonly<SelectProps>) {
 				onChange={handleChange}
 				disabled={disabled}
 			>
-				<ListboxButton>{selected?.name}</ListboxButton>
+				<ListboxButton>
+					{typeof selected === 'object' && selected !== null && 'name' in selected
+						? selected.name
+						: selected}
+				</ListboxButton>
 				<ListboxOptions>{children}</ListboxOptions>
 			</Listbox>
 		</>

@@ -18,6 +18,7 @@ interface InputListProps {
 	placeholder?: string;
 	label?: string;
 	required?: boolean;
+	hidden?: boolean;
 	onChange?: (items: string[]) => void;
 }
 
@@ -30,6 +31,7 @@ export function InputList(props: Readonly<InputListProps>) {
 		type,
 		label,
 		required,
+		hidden,
 		onChange,
 	} = props;
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -143,7 +145,7 @@ export function InputList(props: Readonly<InputListProps>) {
 	};
 
 	return (
-		<div className=''>
+		<div hidden={hidden? hidden : false}>
 			{label && (
 				<Label data-required={required ? 'true' : undefined}>
 					{label}
