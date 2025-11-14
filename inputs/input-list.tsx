@@ -4,7 +4,7 @@
 
 'use client';
 
-import { useRef, useState } from 'react';
+import { FocusEvent, useRef, useState } from 'react';
 import { PlusIcon, XMarkIcon } from '@heroicons/react/16/solid';
 import { Input } from '@/components/inputs';
 import { Button } from '@/components/buttons';
@@ -50,6 +50,7 @@ export function InputList(props: Readonly<InputListProps>) {
 		}
 
 		if (!items.find((i) => i === value)) {
+			setValue('');
 			const newItems = [...items, value];
 			onChange?.(newItems);
 			setItems(newItems);
@@ -103,6 +104,14 @@ export function InputList(props: Readonly<InputListProps>) {
 			setItems(updated);
 		}
 
+		const { value, error } = sanitizeValue(newItem);
+		if (error) {
+			setErrorMessage(error);
+			removeItem(index);
+
+			return;
+		}
+
 		// Clear any previous error message
 		setErrorMessage('');
 	};
@@ -136,13 +145,22 @@ export function InputList(props: Readonly<InputListProps>) {
 				return { value: '', error: `"${value}" is not a valid URL.` };
 			}
 		}
+
+		if (type === 'email') {
+			const email = value.trim();
+			const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+			if (!emailPattern.test(email)) {
+				return { value: '', error: `"${value}" is not a valid email.` };
+			}
+		}
+	
 		return { value };
 	};
 
 	const handleClick = () => {
 		if (value.length > 0) {
 			addItem(value);
-			setValue('');
 			if (inputRef.current) {
 				inputRef.current.value = '';
 			}
