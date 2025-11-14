@@ -19,6 +19,7 @@ interface InputListProps {
 	label?: string;
 	required?: boolean;
 	hidden?: boolean;
+	disabled?: boolean;
 	onChange?: (items: string[]) => void;
 }
 
@@ -31,6 +32,7 @@ export function InputList(props: Readonly<InputListProps>) {
 		type,
 		label,
 		required,
+		disabled,
 		hidden,
 		onChange,
 	} = props;
@@ -107,18 +109,21 @@ export function InputList(props: Readonly<InputListProps>) {
 
 	const listItems = items.map((item, index) => (
 		<li key={item} className='mt-1 flex flex-row items-center'>
-			<button
-				type='button'
-				onClick={() => removeItem(index)}
-				className='bg-secondary-100 hover:bg-danger hover:text-secondary dark:bg-secondary/60 dark:text-danger/80 w-5 rounded-full cursor-pointer'
-			>
-				<XMarkIcon />
-			</button>
+			{disabled ? '' : (
+				<button
+					type='button'
+					onClick={() => removeItem(index)}
+					className='bg-secondary-100 hover:bg-danger hover:text-secondary dark:bg-secondary/60 dark:text-danger/80 w-5 rounded-full cursor-pointer'
+				>
+					<XMarkIcon />
+				</button>
+			)}
 			<input
-				className='w-full bg-transparent iam-input border-0 hover:not-focus:bg-infn/3 px-3'
+				className='w-full bg-transparent iam-input border-0 hover:not-focus:not-disabled:bg-infn/3 px-3'
 				defaultValue={item}
 				contentEditable={false}
 				onBlur={(e) => checkValidity(e.target.value, index)}
+				disabled={disabled}
 			/>
 		</li>
 	));
@@ -145,38 +150,42 @@ export function InputList(props: Readonly<InputListProps>) {
 	};
 
 	return (
-		<div hidden={hidden? hidden : false}>
+		<div hidden={hidden ? hidden : false}>
 			{label && (
 				<Label data-required={required ? 'true' : undefined}>
 					{label}
 				</Label>
 			)}
-			<div className='flex gap-4'>
-				<Input
-					id={id}
-					onChange={(event) => setValue(event.target.value)}
-					value={value}
-					placeholder={placeholder}
-					type={type}
-					required={isRequired}
-				/>
-				<Input
-					hidden
-					readOnly
-					value={JSON.stringify(items)}
-					type={type}
-					name={name}
-				/>
-				<Button
-					className='btn-secondary items-center'
-					type='button'
-					onClick={handleClick}
-					disabled={value.length === 0}
-				>
-					<PlusIcon className='size-5' />
-					Add
-				</Button>
-			</div>
+			
+			{disabled ? '' : (
+				<div className='flex gap-4'>
+					<Input
+						id={id}
+						onChange={(event) => setValue(event.target.value)}
+						value={value}
+						placeholder={placeholder}
+						type={type}
+						required={isRequired}
+						disabled={disabled}
+					/>
+					<Input
+						hidden
+						readOnly
+						value={JSON.stringify(items)}
+						type={type}
+						name={name}
+					/>
+					<Button
+						className='btn-secondary items-center'
+						type='button'
+						onClick={handleClick}
+						disabled={value.length === 0}
+					>
+						<PlusIcon className='size-5' />
+						Add
+					</Button>
+				</div>
+			)}
 			{errorMessage ? (
 				<small className='text-danger'>{errorMessage}</small>
 			) : null}

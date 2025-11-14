@@ -25,7 +25,7 @@ type CheckboxProps = {
 };
 
 export function Checkbox(props: Readonly<CheckboxProps>) {
-	const { label, required } = props;
+	const { label, required, disabled } = props;
 
 	return (
 		<div className='flex items-center space-x-2'>
@@ -37,7 +37,7 @@ export function Checkbox(props: Readonly<CheckboxProps>) {
 			</HeadlessCheckbox>
 			<Label
 				data-required={required ? 'true' : undefined}
-        style={{ cursor: 'pointer' }}
+				style={disabled ? { opacity: 0.5 } : { cursor: 'pointer' }}
 			>
 				{label}
 			</Label>

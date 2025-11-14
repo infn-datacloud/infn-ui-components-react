@@ -65,12 +65,12 @@ export const statusMap: Record<string, StatusConfig> = {
 	},
 	7: {
 		name: 'removed',
-		color: '#424242', // Grey 800 – removed, no longer usable
+		color: '#E53935', // Red 600 – degraded or offline, critical state
 		icon: <XCircleIcon className='size-4' />,
 	},
 	8: {
 		name: 'degraded',
-		color: '#E53935', // Red 600 – degraded or offline, critical state
+		color: '#424242', // Grey 800 – removed, no longer usable
 		icon: <ExclamationTriangleIcon className='size-4' />,
 	},
 	9: {
