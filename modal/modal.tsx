@@ -37,7 +37,7 @@ export function Modal(props: Readonly<ModalProps>) {
 					className='fixed inset-0 bg-black/30 duration-300 data-[closed]:opacity-0'
 				/>
 				<div className='fixed inset-0 z-10 w-screen overflow-y-auto'>
-					<div className='mt-38 mx-auto flex min-h-32 justify-center p-8 w-full md:w-3/4 lg:w-1/3'>
+					<div className='my-38 mx-auto flex min-h-32 justify-center p-8 w-full md:w-3/4 lg:w-1/3'>
 						<DialogPanel
 							transition
 							className='bg-white text-primary dark:text-secondary dark:bg-dark z-50 w-full space-y-4 rounded-3xl p-8 shadow-2xl duration-300 ease-out data-[closed]:transform-[scale-95] data-[closed]:opacity-0'

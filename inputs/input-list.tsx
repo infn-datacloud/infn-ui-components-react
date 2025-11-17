@@ -4,7 +4,7 @@
 
 'use client';
 
-import { FocusEvent, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { PlusIcon, XMarkIcon } from '@heroicons/react/16/solid';
 import { Input } from '@/components/inputs';
 import { Button } from '@/components/buttons';
@@ -41,6 +41,8 @@ export function InputList(props: Readonly<InputListProps>) {
 	const [items, setItems] = useState(originalItems ?? []);
 	const [errorMessage, setErrorMessage] = useState<string | null>(null);
 	const [isRequired, setIsRequired] = useState(required ?? false);
+
+	if (items.length > 0 && isRequired) setIsRequired(false);
 
 	const addItem = (item: string) => {
 		const { value, error } = sanitizeValue(item);
