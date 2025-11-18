@@ -4,7 +4,7 @@
 
 import { Checkbox as HeadlessCheckbox } from '@headlessui/react';
 import { CheckIcon } from '@heroicons/react/16/solid';
-import {Label} from '@/components/form';
+import { Label } from '@/components/form';
 
 export interface CheckboxState<T> {
 	checked: boolean;
@@ -17,7 +17,7 @@ type CheckboxProps = {
 	name?: string;
 	value?: boolean;
 	label?: string;
-  required?: boolean;
+	required?: boolean;
 	defaultChecked?: boolean;
 	checked?: boolean;
 	disabled?: boolean;
@@ -25,10 +25,11 @@ type CheckboxProps = {
 };
 
 export function Checkbox(props: Readonly<CheckboxProps>) {
-	const { label, required, disabled } = props;
+	const { name, label, required, disabled } = props;
 
 	return (
 		<div className='flex items-center space-x-2'>
+			<input type='hidden' name={name} value='false' />
 			<HeadlessCheckbox
 				{...props}
 				className='group flex aspect-square size-4 cursor-pointer items-center rounded border border-slate-300 bg-white/10 ring-1 ring-white/15 ring-inset focus:not-data-focus:outline-none data-checked:bg-white data-focus:outline-2 data-focus:outline-infn'

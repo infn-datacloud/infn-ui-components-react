@@ -34,14 +34,14 @@ export const statusMap: Record<string, StatusConfig> = {
 		icon: <PencilIcon className='size-4' />,
 	},
 	1: {
-		name: 'ready',
-		color: '#64B5F6', // Blue 300 – ready, positive but waiting
-		icon: <CheckCircleIcon className='size-4' />,
-	},
-	2: {
 		name: 'submitted',
 		color: '#1976D2', // Blue 700 – submitted, formal and reliable
 		icon: <PaperAirplaneIcon className='size-4' />,
+	},
+	2: {
+		name: 'ready',
+		color: '#64B5F6', // Blue 300 – ready, positive but waiting
+		icon: <CheckCircleIcon className='size-4' />,
 	},
 	3: {
 		name: 'evaluation',
