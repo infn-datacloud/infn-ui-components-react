@@ -11,14 +11,16 @@ import {
 	ListboxOptions,
 } from './listbox';
 import { useState } from 'react';
-import {Label} from '@/components/form';
+import { Label } from '@/components/form';
 
 export { ListboxOption as SelectOption };
 
-export type SelectOption = {
-	id: string;
-	name: string;
-} | string;
+export type SelectOption =
+	| {
+			id: string;
+			name: string;
+	  }
+	| string;
 
 type SelectProps = {
 	name: string;
@@ -30,14 +32,7 @@ type SelectProps = {
 };
 
 export function Select(props: Readonly<SelectProps>) {
-	const {
-		name,
-		label,
-		onChange,
-		children,
-		defaultValue,
-		disabled,
-	} = props;
+	const { name, label, onChange, children, defaultValue, disabled } = props;
 	const [selected, setSelected] = useState(defaultValue);
 
 	const handleChange = (value: { id: string; name: string }) => {
@@ -47,11 +42,7 @@ export function Select(props: Readonly<SelectProps>) {
 
 	return (
 		<>
-			{label && (
-				<Label>
-					{label}
-				</Label>
-			)}
+			{label && <Label>{label}</Label>}
 			<Listbox
 				name={name}
 				value={selected}
@@ -59,7 +50,9 @@ export function Select(props: Readonly<SelectProps>) {
 				disabled={disabled}
 			>
 				<ListboxButton>
-					{typeof selected === 'object' && selected !== null && 'name' in selected
+					{typeof selected === 'object' &&
+					selected !== null &&
+					'name' in selected
 						? selected.name
 						: selected}
 				</ListboxButton>
