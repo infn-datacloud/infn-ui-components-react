@@ -43,7 +43,7 @@ export function Datetime({
 				disabled={disabled}
 				defaultValue={value}
 				onChange={(e) => onChange?.(e.target.value)}
-				className='iam-input'
+				className='iam-input cursor-pointer'
 			></input>
 		</>
 	);
