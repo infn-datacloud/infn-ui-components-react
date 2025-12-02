@@ -3,14 +3,32 @@
 // SPDX-License-Identifier: EUPL-1.2
 
 import {
-  Input as HeadlessInput,
-  type InputProps as HeadlessInputProps,
-} from "@headlessui/react";
+	Input as HeadlessInput,
+	type InputProps as HeadlessInputProps,
+} from '@headlessui/react';
+import { Label } from '@/components/form';
 
 export interface InputProps extends HeadlessInputProps {
-  "data-testid"?: string;
+	'data-testid'?: string;
+	label?: string;
+	required?: boolean;
 }
 
 export function Input(props: Readonly<InputProps>) {
-  return <HeadlessInput className="iam-input" {...props} />;
+	const { label, required } = props;
+
+	return (
+		<>
+			{label && (
+				<Label data-required={required ? 'true' : undefined}>
+					{label}
+				</Label>
+			)}
+			<HeadlessInput
+				className='iam-input'
+				{...props}
+				required={required ? true : false}
+			/>
+		</>
+	);
 }

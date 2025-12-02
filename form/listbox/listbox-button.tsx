@@ -12,7 +12,7 @@ type ListboxButtonProps = {
 export default function ListboxButton(props: Readonly<ListboxButtonProps>) {
   const { children } = props;
   return (
-    <HeadlessListboxButton className="btn-secondary flex max-w-fit min-w-32 justify-between">
+    <HeadlessListboxButton className="btn-secondary flex max-w-fit min-w-32 justify-between rounded-2xl">
       {children}
       <ChevronDownIcon className="right-0 my-auto size-4" />
     </HeadlessListboxButton>

@@ -1,64 +1,67 @@
 // SPDX-FileCopyrightText: 2025 Istituto Nazionale di Fisica Nucleare
 //
 // SPDX-License-Identifier: EUPL-1.2
+'use client';
 
-import { Button } from "@/components/buttons";
-import { useState } from "react";
+import { Button } from '@/components/buttons';
+import { useState } from 'react';
 
 type CarouselNavigatorProps = {
-  currentPage: number;
-  totalPages: number;
-  onBack: () => void;
-  onNext: () => void;
-  backButtonTitle?: string;
-  nextButtonTitle?: string;
-  nextButtonDisabled?: boolean;
-  backButtonDisabled?: boolean;
+	currentPage: number;
+	totalPages: number;
+	onBack: () => void;
+	onNext: () => void;
+	backButtonTitle?: string;
+	nextButtonTitle?: string;
+	nextButtonDisabled?: boolean;
+	backButtonDisabled?: boolean;
+	className?: string;
 };
 
 export default function CarouselNavigator(
-  props: Readonly<CarouselNavigatorProps>
+	props: Readonly<CarouselNavigatorProps>
 ) {
-  const {
-    currentPage,
-    totalPages,
-    onBack,
-    onNext,
-    backButtonTitle,
-    nextButtonTitle,
-    nextButtonDisabled,
-    backButtonDisabled,
-  } = props;
+	const {
+		currentPage,
+		totalPages,
+		onBack,
+		onNext,
+		backButtonTitle,
+		nextButtonTitle,
+		nextButtonDisabled,
+		backButtonDisabled,
+		className,
+	} = props;
 
-  const [buttonType, setButtonType] = useState<"button" | "submit">("button");
+	const [buttonType, setButtonType] = useState<'button' | 'submit'>('button');
 
-  const back = () => {
-    setButtonType("button");
-    onBack();
-  };
-  const next = () => {
-    setButtonType(currentPage === totalPages - 1 ? "submit" : "button");
-    onNext();
-  };
+	const back = () => {
+		setButtonType('button');
+		onBack();
+	};
+	const next = () => {
+		setButtonType(currentPage === totalPages - 1 ? 'submit' : 'button');
+		onNext();
+	};
 
-  return (
-    <div className="flex flex-row justify-end gap-2">
-      <Button
-        className="btn-tertiary"
-        onClick={back}
-        type="button"
-        disabled={backButtonDisabled}
-      >
-        {backButtonTitle}
-      </Button>
-      <Button
-        className="btn-primary"
-        onClick={next}
-        type={buttonType}
-        disabled={nextButtonDisabled}
-      >
-        {nextButtonTitle}
-      </Button>
-    </div>
-  );
+	return (
+		<div className={`flex flex-row justify-end gap-2 ${className}`}>
+			<Button
+				className='btn-tertiary'
+				onClick={back}
+				type='button'
+				disabled={backButtonDisabled}
+			>
+				{backButtonTitle}
+			</Button>
+			<Button
+				className='btn-primary'
+				onClick={next}
+				type={buttonType}
+				disabled={nextButtonDisabled}
+			>
+				{nextButtonTitle}
+			</Button>
+		</div>
+	);
 }

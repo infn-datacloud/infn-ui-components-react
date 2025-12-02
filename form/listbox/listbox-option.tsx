@@ -7,7 +7,7 @@ import { CheckIcon } from "@heroicons/react/16/solid";
 
 export interface ListboxOptionProps {
   children: React.ReactNode;
-  value: { id: string; name: string };
+  value: { id: string; name: string } | string;
 }
 
 export default function ListboxOption(props: ListboxOptionProps) {

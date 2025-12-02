@@ -2,4 +2,4 @@
 //
 // SPDX-License-Identifier: EUPL-1.2
 
-export { Button } from "@headlessui/react";
+export { default as Button } from './button';
