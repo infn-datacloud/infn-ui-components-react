@@ -2,11 +2,11 @@
 //
 // SPDX-License-Identifier: EUPL-1.2
 
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 
 type NavProps = {
-	logo?: string;
+	logo?: StaticImageData;
 	name?: string;
 	children?: React.ReactNode;
 };

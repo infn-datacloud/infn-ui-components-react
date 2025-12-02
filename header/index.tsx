@@ -2,10 +2,10 @@
 //
 // SPDX-License-Identifier: EUPL-1.2
 
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 type HeaderProps = {
-	logo?: string;
+	logo?: StaticImageData;
 	title?: string;
 	subtitle?: string;
 };
