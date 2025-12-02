@@ -27,7 +27,7 @@ type SelectProps = {
 	label?: string;
 	children: React.ReactNode;
 	onChange?: (value: { id: string; name: string }) => void;
-	defaultValue?: { id: string; name: string } | string;
+	defaultValue?: { id: string; name: string };
 	disabled?: boolean;
 };
 

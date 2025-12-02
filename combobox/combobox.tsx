@@ -10,7 +10,7 @@ import { ComboboxOptions } from "./combobox-options";
 
 type ComboboxProps<T> = {
   onQueryChange: (query: string) => void;
-  onSelect: (value: T) => void;
+  onSelect: (value: T | null) => void;
   children: React.ReactNode;
 };
 

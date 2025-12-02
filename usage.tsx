@@ -31,7 +31,7 @@ import { ToasterPortal } from '@/components/toaster';
 import { useState } from 'react';
 
 export default function Home() {
-    const onSelect = (value: string) => {
+    const onSelect = (value: string | null) => {
         console.log('Selected: ' + value);
     };
 
