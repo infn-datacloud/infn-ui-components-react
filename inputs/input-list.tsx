@@ -132,6 +132,7 @@ export function InputList(props: Readonly<InputListProps>) {
 			<input
 				className='w-full bg-transparent iam-input border-0 hover:not-focus:not-disabled:bg-infn/3 px-3'
 				defaultValue={item}
+				name={name}
 				contentEditable={false}
 				onBlur={(e) => checkValidity(e.target.value, index)}
 				disabled={disabled}
@@ -193,7 +194,6 @@ export function InputList(props: Readonly<InputListProps>) {
 						readOnly
 						value={JSON.stringify(items)}
 						type={type}
-						name={name}
 					/>
 					<Button
 						className='btn-secondary items-center'
