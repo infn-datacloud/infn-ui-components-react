@@ -2,37 +2,37 @@
 //
 // SPDX-License-Identifier: EUPL-1.2
 
-import { UserCircleIcon } from '@heroicons/react/24/solid';
-import { createHash } from 'node:crypto';
+import { UserCircleIcon } from "@heroicons/react/24/solid";
+import { createHash } from "node:crypto";
 
 type GravatarProps = {
-	email?: string | undefined | null;
+  email?: string | undefined | null;
 };
 function FallbackImage() {
-	return <UserCircleIcon className='size-12' />;
+  return <UserCircleIcon className="size-12" />;
 }
 
 export function Gravatar(props: Readonly<GravatarProps>) {
-	const { email } = props;
-	if (!email) {
-		return <FallbackImage />;
-	}
+  const { email } = props;
+  if (!email) {
+    return <FallbackImage />;
+  }
 
-	// https://docs.gravatar.com/sdk/images/
-	const hash = createHash('sha256');
-	hash.update(email);
-	const url = `https://gravatar.com/avatar/${hash.digest(
-		'hex'
-	)}?r=g&d=identicon`;
-	return (
-		// eslint-disable-next-line @next/next/no-img-element
-		<img
-			src={url}
-			width='0'
-			height='0'
-			sizes='100vw'
-			className='my-auto w-12 rounded-full'
-			alt='Gravatar'
-		/>
-	);
+  // https://docs.gravatar.com/sdk/images/
+  const hash = createHash("sha256");
+  hash.update(email);
+  const url = `https://gravatar.com/avatar/${hash.digest(
+    "hex"
+  )}?r=g&d=identicon`;
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={url}
+      width="0"
+      height="0"
+      sizes="100vw"
+      className="my-auto w-12 rounded-full"
+      alt="Gravatar"
+    />
+  );
 }

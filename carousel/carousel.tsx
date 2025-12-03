@@ -14,7 +14,11 @@ type CarouselProps = {
 export default function Carousel(props: Readonly<CarouselProps>) {
   const { selectedIndex, onChange, children, className } = props;
   return (
-    <CarouselGroup selectedIndex={selectedIndex} onChange={onChange} className={className}>
+    <CarouselGroup
+      selectedIndex={selectedIndex}
+      onChange={onChange}
+      className={className}
+    >
       {children}
     </CarouselGroup>
   );

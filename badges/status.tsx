@@ -11,13 +11,13 @@ export default function Status(props: Readonly<StatusProps>) {
   const status = active ? "Active" : "Disabled";
   const title = `${active ? "Active" : "Disabled"}`;
   return (
-		<span
-			title={title}
-			className='data-[status=disabled] bg-danger data-[status=Active]:bg-success flex size-4 max-w-fit flex-none items-center rounded-full p-0.5 px-2 text-xs text-white sm:h-5 sm:min-w-max font-bold'
-			data-status={status}
-			aria-label={title}
-		>
-			<span className='hidden sm:block'>{status}</span>
-		</span>
+    <span
+      title={title}
+      className="data-[status=disabled] bg-danger data-[status=Active]:bg-success flex size-4 max-w-fit flex-none items-center rounded-full p-0.5 px-2 text-xs font-bold text-white sm:h-5 sm:min-w-max"
+      data-status={status}
+      aria-label={title}
+    >
+      <span className="hidden sm:block">{status}</span>
+    </span>
   );
 }

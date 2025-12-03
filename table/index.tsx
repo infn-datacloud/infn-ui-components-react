@@ -2,46 +2,46 @@
 //
 // SPDX-License-Identifier: EUPL-1.2
 
-'use client';
+"use client";
 
 type TableProps = {
-	columns: { field: string; width: number }[];
-    rows: (string | number)[][];
+  columns: { field: string; width: number }[];
+  rows: (string | number)[][];
 };
 
 export function Table(props: Readonly<TableProps>) {
-    const { columns = [], rows = [] } = props;
+  const { columns = [], rows = [] } = props;
 
-	return (
-		<>
-			<div className='w-full overflow-auto my-12'>
-				<div className='w-full flex mb-4'>
-					{columns.map((column, i) => (
-						<div
-							key={i}
-							className='font-bold text-infn uppercase truncate'
-							style={{ width: column.width + '%' }}
-						>
-							{column.field}
-						</div>
-					))}
-				</div>
-				<ul className='w-full flex flex-col'>
-					{rows.map((row, i) => (
-						<li key={i} className='mb-2 flex flex-row py-2 w-full'>
-							{row.map((cell, j) => (
-								<div
-									key={j}
-									className='truncate'
-									style={{ width: columns[j].width + '%' }}
-								>
-									{cell}
-								</div>
-							))}
-						</li>
-					))}
-				</ul>
-			</div>
-		</>
-	);
+  return (
+    <>
+      <div className="my-12 w-full overflow-auto">
+        <div className="mb-4 flex w-full">
+          {columns.map((column, i) => (
+            <div
+              key={i}
+              className="text-infn truncate font-bold uppercase"
+              style={{ width: column.width + "%" }}
+            >
+              {column.field}
+            </div>
+          ))}
+        </div>
+        <ul className="flex w-full flex-col">
+          {rows.map((row, i) => (
+            <li key={i} className="mb-2 flex w-full flex-row py-2">
+              {row.map((cell, j) => (
+                <div
+                  key={j}
+                  className="truncate"
+                  style={{ width: columns[j].width + "%" }}
+                >
+                  {cell}
+                </div>
+              ))}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
+  );
 }

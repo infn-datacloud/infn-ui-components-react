@@ -25,29 +25,29 @@ export function Modal(props: Readonly<ModalProps>) {
   const { title, children, show, onClose } = props;
 
   return (
-		<Transition appear show={show}>
-			<Dialog
-				as='div'
-				className='relative z-30 focus:outline-none'
-				onClose={onClose}
-				data-testid={props['data-testid']}
-			>
-				<DialogBackdrop
-					transition
-					className='fixed inset-0 bg-black/30 duration-300 data-[closed]:opacity-0'
-				/>
-				<div className='fixed inset-0 z-10 w-screen overflow-y-auto'>
-					<div className='my-38 mx-auto flex min-h-32 justify-center p-8 w-full md:w-3/4 lg:w-1/3'>
-						<DialogPanel
-							transition
-							className='bg-white text-primary dark:text-secondary dark:bg-dark z-50 w-full space-y-4 rounded-3xl p-8 shadow-2xl duration-300 ease-out data-[closed]:transform-[scale-95] data-[closed]:opacity-0'
-						>
-							<DialogTitle
-								as='div'
-								className='text-infn flex text-2xl font-black uppercase mb-4'
-							>
-								{title}
-								{/* <button
+    <Transition appear show={show}>
+      <Dialog
+        as="div"
+        className="relative z-30 focus:outline-none"
+        onClose={onClose}
+        data-testid={props["data-testid"]}
+      >
+        <DialogBackdrop
+          transition
+          className="fixed inset-0 bg-black/30 duration-300 data-[closed]:opacity-0"
+        />
+        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+          <div className="mx-auto my-38 flex min-h-32 w-full justify-center p-8 md:w-3/4 lg:w-1/3">
+            <DialogPanel
+              transition
+              className="text-primary dark:text-secondary dark:bg-dark z-50 w-full space-y-4 rounded-3xl bg-white p-8 shadow-2xl duration-300 ease-out data-[closed]:transform-[scale-95] data-[closed]:opacity-0"
+            >
+              <DialogTitle
+                as="div"
+                className="text-infn mb-4 flex text-2xl font-black uppercase"
+              >
+                {title}
+                {/* <button
 									title='Close'
 									className='mr-0 ml-auto'
 									type='reset'
@@ -60,12 +60,12 @@ export function Modal(props: Readonly<ModalProps>) {
 										<XMarkIcon />
 									</div>
 								</button> */}
-							</DialogTitle>
-							{children}
-						</DialogPanel>
-					</div>
-				</div>
-			</Dialog>
-		</Transition>
+              </DialogTitle>
+              {children}
+            </DialogPanel>
+          </div>
+        </div>
+      </Dialog>
+    </Transition>
   );
 }

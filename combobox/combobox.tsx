@@ -14,7 +14,7 @@ type ComboboxProps<T> = {
   children: React.ReactNode;
 };
 
-export  function Combobox<T>(props: Readonly<ComboboxProps<T>>) {
+export function Combobox<T>(props: Readonly<ComboboxProps<T>>) {
   const { onSelect: onSelected, onQueryChange, children } = props;
   return (
     <HeadlessCombobox onChange={onSelected}>

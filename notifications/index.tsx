@@ -30,9 +30,7 @@ type NotificationsProps = {
   className?: string;
 };
 
-export default function Notifications(
-  props: Readonly<NotificationsProps>
-) {
+export default function Notifications(props: Readonly<NotificationsProps>) {
   const { className, ...others } = props;
   const totalRequests = 2;
 

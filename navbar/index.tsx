@@ -2,38 +2,36 @@
 //
 // SPDX-License-Identifier: EUPL-1.2
 
-import Image, { StaticImageData } from 'next/image';
-import Link from 'next/link';
+import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 
 type NavProps = {
-	logo?: StaticImageData;
-	name?: string;
-	children?: React.ReactNode;
+  logo?: StaticImageData;
+  name?: string;
+  children?: React.ReactNode;
 };
 
 export default function Navbar(props: Readonly<NavProps>) {
-	const { logo, name, children } = props;
+  const { logo, name, children } = props;
 
-	return (
-		<div className='w-full h-16 bg-infn flex items-center justify-between sticky top-0 z-100'>
-			<Link href='/' className='w-auto h-full flex items-center'>
-				{logo && (
-					<Image
-						src={logo}
-						alt='Logo'
-						width={100}
-						height={60}
-						className='inline-block ml-4 mr-2'
-					/>
-				)}
-				{name && (
-					<span className='text-white text-xl font-semibold'>
-						{name}
-					</span>
-				)}
-			</Link>
+  return (
+    <div className="bg-infn sticky top-0 z-100 flex h-16 w-full items-center justify-between">
+      <Link href="/" className="flex h-full w-auto items-center">
+        {logo && (
+          <Image
+            src={logo}
+            alt="Logo"
+            width={100}
+            height={60}
+            className="mr-2 ml-4 inline-block"
+          />
+        )}
+        {name && (
+          <span className="text-xl font-semibold text-white">{name}</span>
+        )}
+      </Link>
 
-			{children}
-		</div>
-	);
+      {children}
+    </div>
+  );
 }

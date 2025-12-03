@@ -17,7 +17,7 @@ export default function Link(props: Readonly<LinkProps>) {
     <NextLink
       href={href}
       target={props.target}
-      className={`font-medium text-primary-600 underline dark:text-primary-400 ${className ?? ""}`}
+      className={`text-primary-600 dark:text-primary-400 font-medium underline ${className ?? ""}`}
     >
       {children}
     </NextLink>
