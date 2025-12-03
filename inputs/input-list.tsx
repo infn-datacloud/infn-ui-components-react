@@ -52,7 +52,7 @@ export function InputList(props: Readonly<InputListProps>) {
     }
 
     if (!items.find(i => i === value)) {
-      setValue("");
+      setValue(""); // FIXME: Why?
       const newItems = [...items, value];
       onChange?.(newItems);
       setItems(newItems);
@@ -106,31 +106,26 @@ export function InputList(props: Readonly<InputListProps>) {
       setItems(updated);
     }
 
-    const { value, error } = sanitizeValue(newItem);
+    const { error } = sanitizeValue(newItem);
     if (error) {
       setErrorMessage(error);
       removeItem(index);
-
-      return;
+    } else {
+      setErrorMessage(""); // Clear any previous error message
     }
-
-    // Clear any previous error message
-    setErrorMessage("");
   };
 
   const listItems = items.map((item, index) => (
     <li key={item} className="mt-1 flex flex-row items-center">
-      {disabled ? (
-        ""
-      ) : (
-        <button
-          type="button"
-          onClick={() => removeItem(index)}
-          className="bg-secondary-100 hover:bg-danger hover:text-secondary dark:bg-secondary/60 dark:text-danger/80 w-5 cursor-pointer rounded-full"
-        >
-          <XMarkIcon />
-        </button>
-      )}
+      <button
+        type="button"
+        onClick={() => removeItem(index)}
+        className="bg-secondary-100 hover:bg-danger hover:text-secondary dark:bg-secondary/60 dark:text-danger/80 w-5 cursor-pointer rounded-full"
+        disabled={disabled}
+        hidden={disabled}
+      >
+        <XMarkIcon />
+      </button>
       <input
         className="iam-input hover:not-focus:not-disabled:bg-infn/3 w-full border-0 bg-transparent px-3"
         defaultValue={item}
@@ -147,6 +142,7 @@ export function InputList(props: Readonly<InputListProps>) {
       try {
         new URL(value);
       } catch (err) {
+        console.error(err);
         return { value: "", error: `"${value}" is not a valid URL.` };
       }
     }

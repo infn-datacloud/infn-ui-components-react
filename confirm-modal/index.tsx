@@ -8,7 +8,6 @@ import { Modal, ModalBody, ModalFooter, ModalProps } from "@/components/modal";
 
 interface ConfirmModal extends ModalProps {
   onConfirm?: () => void;
-  onCancel?: () => void;
   children?: React.ReactNode;
   cancelButtonText?: string;
   confirmButtonText?: string;
@@ -19,7 +18,6 @@ interface ConfirmModal extends ModalProps {
 export default function ConfirmModal(props: Readonly<ConfirmModal>) {
   const {
     onConfirm,
-    onCancel,
     children,
     cancelButtonText,
     confirmButtonText,
